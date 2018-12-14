@@ -40,6 +40,8 @@ class FeatureController extends Controller
     public function index()
     {
         $features = $this->feature_service->paginate(self::ITEMS_PER_PAGE);
+
+        return view('features.index', compact('features'));
     }
 
     /**

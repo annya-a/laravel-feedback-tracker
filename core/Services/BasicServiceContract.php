@@ -17,4 +17,12 @@ interface BasicServiceContract
      * @throws \InvalidArgumentException
      */
     public function paginate($perPage = null, $columns = ['*'], $pageName = 'page', $page = null);
+
+    /**
+     * Return output in DTO format.
+     *
+     * @param $result
+     * @return array
+     */
+    public function dtoFormat($result);
 }
