@@ -9,4 +9,8 @@
             {{ $feature->details }}
         </div>
     @endforeach
+
+    @isset($features['paginator'])
+        @include('layouts.paginator.default', ['paginator' => $features['paginator']])
+    @endisset
 @endsection

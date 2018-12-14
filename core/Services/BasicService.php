@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Core\Dto\BasicPaginatorDto;
 use Core\Dto\BasicModelCollectionDto;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 abstract class BasicService implements BasicServiceContract
 {
@@ -75,7 +76,7 @@ abstract class BasicService implements BasicServiceContract
     /**
      * Return output in DTO format.
      *
-     * @param $result
+     * @param LengthAwarePaginator $result
      * @return array
      */
     public function dtoFormat($result)
