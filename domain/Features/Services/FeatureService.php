@@ -2,8 +2,20 @@
 
 namespace Domain\Features\Services;
 
+use App\Providers\FeaturesProvider;
+use Core\Services\BasicService;
+use Domain\Features\Models\Feature;
 
-class FeatureService implements FeatureServiceContract
+class FeatureService extends BasicService implements FeatureServiceContract
 {
 
+    /**
+     * Specify Model class name
+     *
+     * @return mixed
+     */
+    function model()
+    {
+        return Feature::class;
+    }
 }
