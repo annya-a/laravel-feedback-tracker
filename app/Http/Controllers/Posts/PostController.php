@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Features;
+namespace App\Http\Controllers\Posts;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Domain\Features\Services\FeatureServiceContract;
+use Domain\Posts\Services\PostServiceContract;
 
-class FeatureController extends Controller
+class PostController extends Controller
 {
     /**
      * Items per page.
@@ -16,20 +16,20 @@ class FeatureController extends Controller
     const ITEMS_PER_PAGE = 10;
 
     /**
-     * Feature service.
+     * Post service.
      *
-     * @var FeatureServiceContract
+     * @var PostServiceContract
      */
-    protected $feature_service;
+    protected $post_service;
 
     /**
-     * FeatureController constructor.
+     * PostController constructor.
      *
-     * @param FeatureServiceContract $featureService
+     * @param PostServiceContract $postService
      */
-    public function __construct(FeatureServiceContract $featureService)
+    public function __construct(PostServiceContract $postService)
     {
-        $this->feature_service = $featureService;
+        $this->post_service = $postService;
     }
 
     /**
@@ -39,9 +39,9 @@ class FeatureController extends Controller
      */
     public function index()
     {
-        $features = $this->feature_service->paginate(self::ITEMS_PER_PAGE);
+        $posts = $this->post_service->paginate(self::ITEMS_PER_PAGE);
 
-        return view('features.index', compact('features'));
+        return view('posts.index', compact('posts'));
     }
 
     /**

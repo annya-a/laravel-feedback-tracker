@@ -3,7 +3,7 @@
 use Faker\Generator as Faker;
 use Domain\Users\Models\User;
 
-$factory->define(Domain\Features\Models\Feature::class, function (Faker $faker) {
+$factory->define(Domain\Posts\Models\Post::class, function (Faker $faker) {
     return [
         'title' => $faker->sentence,
         'details' => $faker->text,

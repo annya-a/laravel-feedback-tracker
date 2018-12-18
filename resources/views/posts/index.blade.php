@@ -1,14 +1,14 @@
 @extends('layouts.master')
 
 @section('layouts.master.content')
-    @foreach($features as $feature)
+    @foreach($posts as $post)
         <div>
-            {{ $feature->title }}
+            {{ $post->title }}
         </div>
         <div>
-            {{ $feature->details }}
+            {{ $post->details }}
         </div>
     @endforeach
 
-    {{ $features->links() }}
+    {{ $posts->links() }}
 @endsection

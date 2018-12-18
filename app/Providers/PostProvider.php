@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class FeaturesProvider extends ServiceProvider
+class PostProvider extends ServiceProvider
 {
     /**
      * Bootstrap services.
@@ -24,6 +24,6 @@ class FeaturesProvider extends ServiceProvider
     public function register()
     {
         // Bind service.
-        $this->app->bind(\Domain\Features\Services\FeatureServiceContract::class, \Domain\Features\Services\FeatureService::class);
+        $this->app->bind(\Domain\Posts\Services\PostServiceContract::class, \Domain\Posts\Services\PostService::class);
     }
 }

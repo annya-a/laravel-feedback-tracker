@@ -12,6 +12,6 @@ class TestTableSeeder extends Seeder
     public function run()
     {
         $this->call(TestUsersTableSeeder::class);
-        $this->call(TestFeaturesTableSeeder::class);
+        $this->call(TestPostsTableSeeder::class);
     }
 }

@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\Features\FeatureController;
+use App\Http\Controllers\Posts\PostController;
 
 /**
  * Features.
  */
-Route::resource('/feature-requests', FeatureController::class);
+Route::resource('/posts-requests', PostController::class);

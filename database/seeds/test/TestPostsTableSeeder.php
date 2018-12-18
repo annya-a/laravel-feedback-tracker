@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class TestFeaturesTableSeeder extends Seeder
+class TestPostsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class TestFeaturesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Domain\Features\Models\Feature::class, 10)->create();
+        factory(Domain\Posts\Models\Post::class, 10)->create();
     }
 }
