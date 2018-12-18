@@ -5,9 +5,6 @@ namespace Core\Services;
 use Illuminate\Container\Container as App;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Core\Dto\BasicPaginatorDto;
-use Core\Dto\BasicModelCollectionDto;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 abstract class BasicService implements BasicServiceContract
 {
@@ -24,28 +21,12 @@ abstract class BasicService implements BasicServiceContract
     protected $builder;
 
     /**
-     * Collection DTO.
-     *
-     * @var BasicModelCollectionDto
-     */
-    protected $collection_dto;
-
-    /**
-     * Paginator DTO.
-     *
-     * @var BasicPaginatorDto
-     */
-    protected $paginator_dto;
-
-    /**
      * @param App $app
      * @throws \Exception
      */
     public function __construct(App $app) {
         $this->app = $app;
         $this->makeModel();
-        $this->paginator_dto = $this->paginatorDto();
-        $this->collection_dto = $this->modelCollectionDto();
     }
 
     /**
@@ -58,33 +39,17 @@ abstract class BasicService implements BasicServiceContract
     /**
      * Paginate the given query.
      *
-     * @param  int  $perPage
-     * @param  array  $columns
-     * @param  string  $pageName
-     * @param  int|null  $page
-     * @return array
+     * @param  int $perPage
+     * @param  array $columns
+     * @param  string $pageName
+     * @param  int|null $page
      *
-     * @throws \InvalidArgumentException
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
      */
     public function paginate($perPage = null, $columns = ['*'], $pageName = 'page', $page = null)
     {
-        $result = $this->builder->paginate($perPage);
 
-        return $this->dtoFormat($result);
-    }
-
-    /**
-     * Return output in DTO format.
-     *
-     * @param LengthAwarePaginator $result
-     * @return array
-     */
-    public function dtoFormat($result)
-    {
-        return[
-            'data' => $this->collection_dto::create($result->items()),
-            'paginator' => $this->paginator_dto::create($result),
-        ];
+        return $this->builder->paginate($perPage);
     }
 
     /**
@@ -100,23 +65,5 @@ abstract class BasicService implements BasicServiceContract
             throw new \Exception("Class {$this->model()} must be an instance of Illuminate\\Database\\Eloquent\\Model");
 
         return $this->builder = $model->newQuery();
-    }
-
-    /**
-     * Get paginator DTO.
-     *
-     * @return string
-     */
-    protected function paginatorDto() {
-        return BasicPaginatorDto::class;
-    }
-
-    /**
-     * Model collection DTO class.
-     *
-     * @return string
-     */
-    protected function modelCollectionDto() {
-        return BasicModelCollectionDto::class;
     }
 }

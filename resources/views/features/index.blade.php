@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('layouts.master.content')
-    @foreach($features['data'] as $feature)
+    @foreach($features as $feature)
         <div>
             {{ $feature->title }}
         </div>
@@ -10,7 +10,5 @@
         </div>
     @endforeach
 
-    @isset($features['paginator'])
-        @include('layouts.paginator.default', ['paginator' => $features['paginator']])
-    @endisset
+    {{ $features->links() }}
 @endsection

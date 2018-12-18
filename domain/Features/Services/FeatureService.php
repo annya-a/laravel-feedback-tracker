@@ -14,7 +14,7 @@ class FeatureService extends BasicService implements FeatureServiceContract
      *
      * @return mixed
      */
-    function model()
+    public function model()
     {
         return Feature::class;
     }
