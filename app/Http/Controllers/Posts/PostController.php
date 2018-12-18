@@ -37,9 +37,10 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($category_id)
     {
-        $posts = $this->post_service->paginate(self::ITEMS_PER_PAGE);
+        $posts = $this->post_service->with(['category'])
+            ->paginate(self::ITEMS_PER_PAGE);
 
         return view('posts.index', compact('posts'));
     }
@@ -63,6 +64,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = $this->post_service->with(['user'])->findOrFail($id);
+
+        return view('posts.show', compact('post'));
     }
 }

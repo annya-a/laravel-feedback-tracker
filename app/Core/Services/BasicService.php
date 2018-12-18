@@ -26,7 +26,7 @@ abstract class BasicService implements BasicServiceContract
      */
     public function __construct(App $app) {
         $this->app = $app;
-        $this->makeModel();
+        $this->makeBuilder();
     }
 
     /**
@@ -35,6 +35,31 @@ abstract class BasicService implements BasicServiceContract
      * @return mixed
      */
     abstract protected function model();
+
+    /**
+     * Reset builder after we finish operation.
+     *
+     * @throws \Exception
+     */
+    public function resetBuilder()
+    {
+        $this->makeBuilder();
+    }
+
+    /**
+     * Make model.
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     * @throws \Exception
+     */
+    public function makeBuilder() {
+        $model = $this->app->make($this->model());
+
+        if (!$model instanceof Model)
+            throw new \Exception("Class {$this->model()} must be an instance of Illuminate\\Database\\Eloquent\\Model");
+
+        return $this->builder = $model->newQuery();
+    }
 
     /**
      * Paginate the given query.
@@ -48,22 +73,39 @@ abstract class BasicService implements BasicServiceContract
      */
     public function paginate($perPage = null, $columns = ['*'], $pageName = 'page', $page = null)
     {
+        $result = $this->builder->paginate($perPage);
 
-        return $this->builder->paginate($perPage);
+        $this->resetBuilder();
+
+        return $result;
     }
 
     /**
-     * Make model.
+     * Find or fail model by id.
      *
-     * @return \Illuminate\Database\Eloquent\Builder
-     * @throws \Exception
+     * @param $id
+     * @return Builder|Builder[]|\Illuminate\Database\Eloquent\Collection|Model
      */
-    protected function makeModel() {
-        $model = $this->app->make($this->model());
+    public function findOrFail($id)
+    {
+        $result = $this->builder->findOrFail($id);
 
-        if (!$model instanceof Model)
-            throw new \Exception("Class {$this->model()} must be an instance of Illuminate\\Database\\Eloquent\\Model");
+        $this->resetBuilder();
 
-        return $this->builder = $model->newQuery();
+        return $result;
+    }
+
+    /**
+     * Load relations.
+     *
+     * @var array|string $relations
+     *
+     * @return $this
+     */
+    public function with($relations)
+    {
+        $this->builder->with($relations);
+
+        return $this;
     }
 }
