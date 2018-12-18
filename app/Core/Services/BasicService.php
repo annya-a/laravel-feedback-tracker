@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Services;
+namespace App\Core\Services;
 
 use Illuminate\Container\Container as App;
 use Illuminate\Database\Eloquent\Builder;

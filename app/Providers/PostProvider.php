@@ -24,6 +24,6 @@ class PostProvider extends ServiceProvider
     public function register()
     {
         // Bind service.
-        $this->app->bind(\Domain\Posts\Services\PostServiceContract::class, \Domain\Posts\Services\PostService::class);
+        $this->app->bind(\App\Domain\Posts\Services\PostServiceContract::class, \App\Domain\Posts\Services\PostService::class);
     }
 }

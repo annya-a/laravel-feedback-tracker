@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Posts;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Domain\Posts\Services\PostServiceContract;
+use App\Domain\Posts\Services\PostServiceContract;
 
 class PostController extends Controller
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Services;
+namespace App\Core\Services;
 
 
 interface BasicServiceContract

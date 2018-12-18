@@ -1,9 +1,9 @@
 <?php
 
-namespace Domain\Posts\Services;
+namespace App\Domain\Posts\Services;
 
-use Core\Services\BasicService;
-use Domain\Posts\Models\Post;
+use App\Core\Services\BasicService;
+use App\Domain\Posts\Models\Post;
 
 class PostService extends BasicService implements PostServiceContract
 {

@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class TestUsersTableSeeder extends Seeder
+class TestCategoriesTalbeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class TestUsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Domain\Users\Models\User::class, 10)->create();
+        factory(App\Domain\Categories\Models\Category::class, 10)->create();
     }
 }
