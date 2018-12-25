@@ -10,5 +10,6 @@ $factory->define(App\Domain\Posts\Models\Post::class, function (Faker $faker) {
         'details' => $faker->text,
         'user_id' => User::inRandomOrder()->first()->id,
         'category_id' => Category::inRandomOrder()->first()->id,
+        'status' => $faker->numberBetween(0, 2),
     ];
 });

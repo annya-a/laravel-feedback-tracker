@@ -6,6 +6,10 @@
     </div>
 
     <div>
+        @include('posts.partials.status', ['status' => $post->status])
+    </div>
+
+    <div>
         {{ $post->user->name }}
     </div>
 

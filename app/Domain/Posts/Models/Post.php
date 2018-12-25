@@ -6,10 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 use App\Domain\Categories\Models\Category;
 use App\Domain\Users\Models\User;
 
+/**
+ * @property integer $id
+ * @property string $title
+ * @property string $details
+ * @property User $user
+ * @property Category $category
+ * @property integer $status
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ */
 class Post extends Model
 {
     /**
-     * Category ralation.
+     * Category relation.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
