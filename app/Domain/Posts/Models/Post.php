@@ -2,6 +2,7 @@
 
 namespace App\Domain\Posts\Models;
 
+use App\Domain\Comments\Models\Comment;
 use Illuminate\Database\Eloquent\Model;
 use App\Domain\Categories\Models\Category;
 use App\Domain\Users\Models\User;
@@ -36,5 +37,16 @@ class Post extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+
+    /**
+     * Comments relation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }

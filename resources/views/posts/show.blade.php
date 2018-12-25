@@ -20,4 +20,6 @@
     <div>
         {{ $post->created_at->format('F d Y') }}
     </div>
+
+    @include('comments.partials.list', ['comments' => $post->comments])
 @endsection

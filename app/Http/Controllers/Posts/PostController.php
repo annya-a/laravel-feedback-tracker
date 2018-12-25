@@ -64,7 +64,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = $this->post_service->with(['user'])->findOrFail($id);
+        $post = $this->post_service->with(['user', 'comments', 'comments.user'])->findOrFail($id);
 
         return view('posts.show', compact('post'));
     }
