@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class PostProvider extends ServiceProvider
+class CommentsProvider extends ServiceProvider
 {
     /**
      * Bootstrap services.
@@ -24,6 +24,6 @@ class PostProvider extends ServiceProvider
     public function register()
     {
         // Bind service.
-        $this->app->bind(\App\Domain\Posts\Services\PostServiceContract::class, \App\Domain\Posts\Services\PostService::class);
+        $this->app->bind(\App\Domain\Comments\Services\CommentServiceContract::class, \App\Domain\Comments\Services\CommentService::class);
     }
 }

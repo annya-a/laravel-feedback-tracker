@@ -96,6 +96,23 @@ abstract class BasicService implements BasicServiceContract
     }
 
     /**
+     * Save a new entity in repository
+     *
+     *
+     * @param array $attributes
+     *
+     * @return mixed
+     */
+    public function create(array $attributes)
+    {
+        $result = $this->builder->create($attributes);
+
+        $this->resetBuilder();
+
+        return $result;
+    }
+
+    /**
      * Load relations.
      *
      * @var array|string $relations

@@ -21,5 +21,6 @@
         {{ $post->created_at->format('F d Y') }}
     </div>
 
+    @include('comments.partials.form', ['post' => $post])
     @include('comments.partials.list', ['comments' => $post->comments])
 @endsection

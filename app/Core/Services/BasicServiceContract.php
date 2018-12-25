@@ -33,7 +33,23 @@ interface BasicServiceContract
      */
     public function paginate($perPage = null, $columns = ['*'], $pageName = 'page', $page = null);
 
+    /**
+     * Find model ir fail.
+     *
+     * @param integer $id
+     * @return mixed
+     */
     public function findOrFail($id);
+
+    /**
+     * Save a new entity in repository
+     *
+     *
+     * @param array $attributes
+     *
+     * @return mixed
+     */
+    public function create(array $attributes);
 
     /**
      * Load relations.
