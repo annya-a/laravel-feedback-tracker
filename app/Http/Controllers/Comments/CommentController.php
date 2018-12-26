@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Comments;
 
 use App\Domain\Comments\Services\CommentServiceContract;
-use Illuminate\Http\Request;
+use App\Http\Requests\Comments\CreateCommentRequest;
 use App\Http\Controllers\Controller;
 
 class CommentController extends Controller
@@ -28,10 +28,10 @@ class CommentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  CreateCommentRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateCommentRequest $request)
     {
         $attributes = $request->only('text', 'post_id');
         $attributes['user_id'] = $request->user()->id;
