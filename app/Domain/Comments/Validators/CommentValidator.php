@@ -12,5 +12,9 @@ class CommentValidator extends LaravelValidator {
             'string' => 'string',
             'min:5' => 'min:5',
         ],
+        'post_id' => [
+            'reqired' => 'required',
+            'exists' => 'exists:posts,id',
+        ],
     ];
 }

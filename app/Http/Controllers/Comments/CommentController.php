@@ -23,6 +23,7 @@ class CommentController extends Controller
     public function __construct(CommentServiceContract $commentService)
     {
         $this->comment_service = $commentService;
+        $this->middleware('auth')->only('store');
     }
 
     /**
