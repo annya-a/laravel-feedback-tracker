@@ -5,22 +5,21 @@
         @csrf
 
         {{-- Email --}}
-        @include('layouts.form.email', [
+        @include('layouts.form.elements.email', [
         'label' => __('E-Mail Address'),
         'name' => 'email',
         'value' => old('email'),
         ])
 
         {{-- Password --}}
-        @include('layouts.form.password', [
+        @include('layouts.form.elements.password', [
         'label' => __('Password'),
         'name' => 'password',
         ])
 
         {{-- Submit button --}}
-        @include('layouts.form.button', [
+        @include('layouts.form.elements.button', [
         'label' => __('Login')
         ])
     </form>
-
 @endsection

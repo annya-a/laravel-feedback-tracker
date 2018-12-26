@@ -113,6 +113,24 @@ abstract class BasicService implements BasicServiceContract
     }
 
     /**
+     * Delete the first record matching the attributes or create it.
+     *
+     * @param  array  $attributes
+     * @param  array  $values
+     * @return \Illuminate\Database\Eloquent\Model|static
+     */
+    public function deleteOrCreate(array $attributes, array $values = [])
+    {
+        if (! is_null($instance = $this->builder->where($attributes)->first())) {
+            return $instance->delete();
+        }
+
+        return tap($this->builder->newModelInstance($attributes + $values), function ($instance) {
+            $instance->save();
+        });
+    }
+
+    /**
      * Load relations.
      *
      * @var array|string $relations

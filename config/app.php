@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\PostsProvider::class,
         App\Providers\CommentsProvider::class,
+        App\Providers\VotesProvider::class,
 
     ],
 

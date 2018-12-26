@@ -15,5 +15,6 @@ class TestTableSeeder extends Seeder
         $this->call(TestCategoriesTalbeSeeder::class);
         $this->call(TestPostsTableSeeder::class);
         $this->call(TestCommentsTableSeeder::class);
+        $this->call(TestVotesTableSeeder::class);
     }
 }

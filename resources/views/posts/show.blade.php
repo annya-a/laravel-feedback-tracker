@@ -2,6 +2,10 @@
 
 @section('layouts.master.content')
     <div>
+        @include('votes.vote', ['post' => $post])
+    </div>
+
+    <div>
         {{ $post->title }}
     </div>
 

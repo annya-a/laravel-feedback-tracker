@@ -52,6 +52,15 @@ interface BasicServiceContract
     public function create(array $attributes);
 
     /**
+     * Delete the first record matching the attributes or create it.
+     *
+     * @param  array  $attributes
+     * @param  array  $values
+     * @return \Illuminate\Database\Eloquent\Model|static
+     */
+    public function deleteOrCreate(array $attributes, array $values = []);
+
+    /**
      * Load relations.
      *
      * @var array|string $relations

@@ -64,7 +64,9 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = $this->post_service->with(['user', 'comments', 'comments.user'])->findOrFail($id);
+        $post = $this->post_service->with(['user', 'comments', 'comments.user'])
+            ->withVotes()
+            ->findOrFail($id);
 
         return view('posts.show', compact('post'));
     }
