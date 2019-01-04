@@ -1,0 +1,22 @@
+#mainNav {
+  position: static;
+  border-bottom: 1px solid $grey;
+}
+
+#mainNav .navbar-brand:hover {
+  color: $light-black;
+}
+
+@media only screen and (min-width: 992px) {
+  #mainNav .navbar-brand {
+    padding-left: 0;
+    color: $light-black;
+    font-weight: 600;
+  }
+
+  #mainNav .navbar-nav > li.nav-item > a {
+    padding: 10px 20px;
+    color: $light-black;
+  }
+}
+
