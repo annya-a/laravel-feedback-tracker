@@ -8,5 +8,8 @@
     'placeholder' => __('Leave a comment')
     ])
 
-    @include('layouts.form.elements.button', ['label' => 'Submit'])
+    @include('layouts.form.elements.button', [
+    'label' => 'Submit',
+    'class' => 'btn-primary',
+    ])
 </form>

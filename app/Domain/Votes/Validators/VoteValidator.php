@@ -7,7 +7,7 @@ use \Prettus\Validator\LaravelValidator;
 class VoteValidator extends LaravelValidator {
 
     protected $rules = [
-        'post_id' => [
+        'post' => [
             'reqired' => 'required',
             'exists' => 'exists:posts,id',
         ],

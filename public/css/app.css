@@ -16085,31 +16085,23 @@ a.text-dark:focus {
   }
 }
 
-.navbar-laravel {
-  background-color: #fff;
-  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-}
-
 #mainNav {
   position: static;
   border-bottom: 1px solid #eee;
+  margin-bottom: 30px;
 }
 
 #mainNav .navbar-brand:hover {
   color: #333333;
 }
 
-@media only screen and (min-width: 992px) {
-  #mainNav .navbar-brand {
-    padding-left: 0;
-    color: #333333;
-    font-weight: 600;
-  }
+#mainNav .navbar-brand {
+  padding-left: 0;
+  color: #333333;
+  font-weight: 600;
+}
 
-  #mainNav .navbar-nav > li.nav-item > a {
-    padding: 10px 20px;
-    color: #333333;
-  }
+#mainNav .navbar-nav > li.nav-item > a {
+  color: #333333;
 }
 

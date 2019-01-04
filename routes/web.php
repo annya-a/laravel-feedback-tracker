@@ -10,6 +10,8 @@ Route::resource('/posts', PostController::class)->only([
     'index', 'show', 'store'
 ]);
 
+Route::post('/posts/{post}/vote', [VoteController::class, 'vote'])->name('posts.vote');
+
 // Comments.
 Route::resource('/comments', CommentController::class)->only([
     'store', 'edit'
@@ -18,6 +20,3 @@ Route::resource('/comments', CommentController::class)->only([
 // Authentication.
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
-
-// Vote.
-Route::post('/votes/vote', [VoteController::class, 'vote'])->name('votes.vote');

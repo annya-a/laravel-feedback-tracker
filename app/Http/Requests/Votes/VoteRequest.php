@@ -14,7 +14,7 @@ class VoteRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return $this->user() && $this->user()->can('vote', $this->route('post'));
     }
 
     /**
@@ -25,6 +25,6 @@ class VoteRequest extends FormRequest
      */
     public function rules(VoteValidator $validator)
     {
-        return $validator->getRules();
+        return [];
     }
 }

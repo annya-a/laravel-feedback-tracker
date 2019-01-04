@@ -1,7 +1,7 @@
 @extends('layouts.form.element')
 
 @section('layouts.form.element.content')
-<textarea name="{{ $name }}"
+<textarea name="{{ $name }}" class="form-control"
           @isset($placeholder)
           placeholder="{{ $placeholder }}"
         @endisset
@@ -10,4 +10,4 @@
     {{ $value }}
 @endisset
 </textarea>
-@endsection
+@overwrite
