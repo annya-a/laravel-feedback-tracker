@@ -29,6 +29,7 @@ abstract class BasicService implements BasicServiceContract
         $this->makeBuilder();
     }
 
+
     /**
      * Specify Model class name
      *
@@ -62,57 +63,6 @@ abstract class BasicService implements BasicServiceContract
     }
 
     /**
-     * Paginate the given query.
-     *
-     * @param  int $perPage
-     * @param  array $columns
-     * @param  string $pageName
-     * @param  int|null $page
-     *
-     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
-     */
-    public function paginate($perPage = null, $columns = ['*'], $pageName = 'page', $page = null)
-    {
-        $result = $this->builder->paginate($perPage);
-
-        $this->resetBuilder();
-
-        return $result;
-    }
-
-    /**
-     * Find or fail model by id.
-     *
-     * @param $id
-     * @return Builder|Builder[]|\Illuminate\Database\Eloquent\Collection|Model
-     */
-    public function findOrFail($id)
-    {
-        $result = $this->builder->findOrFail($id);
-
-        $this->resetBuilder();
-
-        return $result;
-    }
-
-    /**
-     * Save a new entity in repository
-     *
-     *
-     * @param array $attributes
-     *
-     * @return mixed
-     */
-    public function create(array $attributes)
-    {
-        $result = $this->builder->create($attributes);
-
-        $this->resetBuilder();
-
-        return $result;
-    }
-
-    /**
      * Delete the first record matching the attributes or create it.
      *
      * @param  array  $attributes
@@ -142,5 +92,21 @@ abstract class BasicService implements BasicServiceContract
         $this->builder->with($relations);
 
         return $this;
+    }
+
+    /**
+     * Call method from builder if it isn't find in service class.
+     *
+     * @param $name
+     * @param $arguments
+     * @return mixed
+     */
+    public function __call($name, $arguments)
+    {
+        $result = $this->builder->$name(...$arguments);
+
+        $this->resetBuilder();
+
+        return $result;
     }
 }

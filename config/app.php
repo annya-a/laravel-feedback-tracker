@@ -177,6 +177,7 @@ return [
         App\Providers\PostsProvider::class,
         App\Providers\CommentsProvider::class,
         App\Providers\VotesProvider::class,
+        App\Providers\CategoryProvider::class,
 
     ],
 
