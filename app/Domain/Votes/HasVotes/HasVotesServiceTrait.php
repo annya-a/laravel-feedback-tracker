@@ -24,4 +24,9 @@ trait HasVotesServiceTrait
 
         return $this;
     }
+
+    public function getVoters(int $id)
+    {
+        return $this->builder->find($id)->voters;
+    }
 }

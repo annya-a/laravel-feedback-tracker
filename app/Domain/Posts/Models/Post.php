@@ -3,10 +3,12 @@
 namespace App\Domain\Posts\Models;
 
 use App\Domain\Comments\Models\Comment;
+use App\Domain\Votes\HasVotes\HasVotesModelContract;
+use App\Domain\Votes\HasVotes\HasVotesModelTrait;
 use Illuminate\Database\Eloquent\Model;
 use App\Domain\Categories\Models\Category;
 use App\Domain\Users\Models\User;
-use App\Domain\Votes\Models\Vote;
+
 
 /**
  * @property integer $id
@@ -18,8 +20,10 @@ use App\Domain\Votes\Models\Vote;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  */
-class Post extends Model
+class Post extends Model implements HasVotesModelContract
 {
+    use HasVotesModelTrait;
+
     /**
      * Category relation.
      *
@@ -49,15 +53,5 @@ class Post extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class);
-    }
-
-    /**
-     * Comments relation.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function votes()
-    {
-        return $this->hasMany(Vote::class);
     }
 }

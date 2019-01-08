@@ -3,8 +3,9 @@
 namespace App\Domain\Posts\Services;
 
 use App\Core\Services\BasicServiceContract;
+use App\Domain\Votes\HasVotes\HasVotesServiceContract;
 
-interface PostServiceContract extends BasicServiceContract
+interface PostServiceContract extends BasicServiceContract, HasVotesServiceContract
 {
     /**
      * Planned status.

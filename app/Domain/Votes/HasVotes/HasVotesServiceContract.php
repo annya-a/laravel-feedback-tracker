@@ -11,4 +11,6 @@ interface HasVotesServiceContract
      * @return $this
      */
     public function withVotes();
+
+    public function getVoters(int $id);
 }

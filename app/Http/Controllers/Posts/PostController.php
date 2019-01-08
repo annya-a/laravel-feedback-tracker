@@ -16,6 +16,11 @@ class PostController extends Controller
     const ITEMS_PER_PAGE = 10;
 
     /**
+     * Voters amount to show,
+     */
+    const VOTERS_AMOUNT = 10;
+
+    /**
      * Post service.
      *
      * @var PostServiceContract
@@ -64,10 +69,14 @@ class PostController extends Controller
      */
     public function show($id)
     {
+        // Get post.
         $post = $this->post_service->with(['user', 'comments', 'comments.user'])
             ->withVotes()
             ->findOrFail($id);
 
-        return view('posts.show', compact('post'));
+        // Get voters for post.
+        $voters = $this->post_service->getVoters($id);
+
+        return view('posts.show', compact('post', 'voters'));
     }
 }

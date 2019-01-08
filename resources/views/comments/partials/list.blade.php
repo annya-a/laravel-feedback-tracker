@@ -9,7 +9,7 @@
                 {{ $comment->text }}
             </div>
             <div class="meta text-muted small">
-                {{ $comment->created_at }}
+                {{ $comment->created_at->format('F d, Y') }}
             </div>
         </div>
     </div>

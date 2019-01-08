@@ -1,6 +1,21 @@
-@extends('layouts.master')
+@extends('layouts.left')
 
-@section('layouts.master.content')
+@section('layouts.left.left')
+    <div class="card">
+        <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted">Voters</h6>
+            @foreach($voters as $voter)
+                <div class="row">
+                    <div class="col offset-1">
+                        {{ $voter->name }}
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+@endsection
+
+@section('layouts.left.main')
     <div class="row">
         <div class="col-1">
             @include('votes.vote', ['post' => $post])
