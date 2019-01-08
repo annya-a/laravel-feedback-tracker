@@ -34,6 +34,7 @@
     </div>
 
     @auth
+        <h3 class="text-muted">Comments</h3>
         <div class="row">
             <div class="col offset-1">
                 @include('comments.partials.form', ['post' => $post])
