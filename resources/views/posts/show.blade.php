@@ -1,5 +1,6 @@
 @extends('layouts.left')
 
+{{-- Sidebar --}}
 @section('layouts.left.left')
     <div class="card">
         <div class="card-body">
@@ -15,6 +16,7 @@
     </div>
 @endsection
 
+{{-- Main --}}
 @section('layouts.left.main')
     <div class="row">
         <div class="col-1">

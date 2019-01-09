@@ -25,5 +25,11 @@ class PostsProvider extends ServiceProvider
     {
         // Bind service.
         $this->app->bind(\App\Domain\Posts\Services\PostServiceContract::class, \App\Domain\Posts\Services\PostService::class);
+
+        // Bind service.
+        $this->app->bind(
+            \App\Domain\Posts\Services\PostCategoryServiceContract::class,
+            \App\Domain\Posts\Services\PostCategoryService::class
+        );
     }
 }

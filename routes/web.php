@@ -5,7 +5,7 @@ use App\Http\Controllers\Comments\CommentController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Votes\VoteController;
 use App\Http\Controllers\Home\HomeController;
-use App\Http\Controllers\Categories\CategoryCotroller;
+use App\Http\Controllers\Categories\CategoryController;
 
 // Posts.
 Route::resource('/posts', PostController::class)->only([
@@ -20,7 +20,7 @@ Route::resource('/comments', CommentController::class)->only([
 ]);
 
 // Comments.
-Route::resource('/categories', CategoryCotroller::class)->only([
+Route::resource('/categories', CategoryController::class)->only([
     'show'
 ]);
 
