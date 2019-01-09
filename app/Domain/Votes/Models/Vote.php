@@ -2,7 +2,7 @@
 
 namespace App\Domain\Votes\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Core\Database\Eloquent\Model;
 
 class Vote extends Model
 {

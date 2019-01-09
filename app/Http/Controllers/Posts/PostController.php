@@ -70,13 +70,24 @@ class PostController extends Controller
     public function show($id)
     {
         // Get post.
-        $post = $this->post_service->with(['user', 'comments', 'comments.user'])
-            ->withVotes()
-            ->findOrFail($id);
+        $post = $this->showLoadPost($id);
 
         // Get voters for post.
         $voters = $this->post_service->getVoters($id);
 
         return view('posts.show', compact('post', 'voters'));
+    }
+
+    /**
+     * Load post which is suitable for show.
+     *
+     * @param $id
+     * @return mixed
+     */
+    private function showLoadPost($id)
+    {
+        return $this->post_service->with(['user', 'comments', 'comments.user'])
+            ->withVotes()
+            ->findOrFail($id);
     }
 }

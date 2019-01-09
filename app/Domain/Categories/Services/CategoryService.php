@@ -7,7 +7,6 @@ use App\Domain\Categories\Models\Category;
 
 class CategoryService extends BasicService implements CategoryServiceContract
 {
-
     /**
      * Specify Model class name
      *
@@ -16,5 +15,20 @@ class CategoryService extends BasicService implements CategoryServiceContract
     protected function model()
     {
         return Category::class;
+    }
+
+    /**
+     * Get collection of categories.
+     *
+     * @param int $limit
+     * @return mixed
+     */
+    public function getList(int $limit = 0)
+    {
+        $result = $this->builder->limit($limit)->get();
+
+        $this->resetBuilder();
+
+        return $result;
     }
 }

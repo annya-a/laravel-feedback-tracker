@@ -27,4 +27,13 @@ interface PostServiceContract extends BasicServiceContract, HasVotesServiceContr
      * @var string.
      */
     const STATUS_COMPLETED = 2;
+
+    /**
+     * Get collection of posts by status.
+     *
+     * @param $status
+     * @param int $limit
+     * @return mixed
+     */
+    public function getListByStatus($status, int $limit = 0);
 }

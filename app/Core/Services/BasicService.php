@@ -3,8 +3,8 @@
 namespace App\Core\Services;
 
 use Illuminate\Container\Container as App;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
+use App\Core\Database\Eloquent\Builder;
+use App\Core\Database\Eloquent\Model;
 
 abstract class BasicService implements BasicServiceContract
 {
@@ -63,21 +63,28 @@ abstract class BasicService implements BasicServiceContract
     }
 
     /**
-     * Delete the first record matching the attributes or create it.
+     * Find model by id or fail.
      *
-     * @param  array  $attributes
-     * @param  array  $values
-     * @return \Illuminate\Database\Eloquent\Model|static
+     * @var $id
      */
-    public function deleteOrCreate(array $attributes, array $values = [])
+    public function findOrFail($id)
     {
-        if (! is_null($instance = $this->builder->where($attributes)->first())) {
-            return $instance->delete();
-        }
+        $result = $this->builder->findOrFail($id);
 
-        return tap($this->builder->newModelInstance($attributes + $values), function ($instance) {
-            $instance->save();
-        });
+        $this->resetBuilder();
+
+        return $result;
+    }
+
+    /**
+     * Create model.
+     *
+     * @param array $attributes
+     * @return mixed
+     */
+    public function create(array $attributes)
+    {
+        return $this->builder->create($attributes);
     }
 
     /**
@@ -95,18 +102,15 @@ abstract class BasicService implements BasicServiceContract
     }
 
     /**
-     * Call method from builder if it isn't find in service class.
+     * Load count relations.
      *
-     * @param $name
-     * @param $arguments
-     * @return mixed
+     * @var array|string $relations
+     * @return $this
      */
-    public function __call($name, $arguments)
+    public function withCount($relations)
     {
-        $result = $this->builder->$name(...$arguments);
+        $this->builder->withCount($relations);
 
-        $this->resetBuilder();
-
-        return $result;
+        return $this;
     }
 }

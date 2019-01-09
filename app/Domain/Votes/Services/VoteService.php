@@ -28,6 +28,6 @@ class VoteService extends BasicService implements VoteServiceContract
     {
         $attributes = ['post_id' => $post_id, 'user_id' => $user_id];
 
-        return $this->deleteOrCreate($attributes);
+        return $this->builder->deleteOrCreate($attributes);
     }
 }

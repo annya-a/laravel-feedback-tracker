@@ -21,13 +21,19 @@ interface BasicServiceContract
     public function makeBuilder();
 
     /**
-     * Delete the first record matching the attributes or create it.
+     * Find model by id or fail.
      *
-     * @param  array  $attributes
-     * @param  array  $values
-     * @return \Illuminate\Database\Eloquent\Model|static
+     * @var $id
      */
-    public function deleteOrCreate(array $attributes, array $values = []);
+    public function findOrFail($id);
+
+    /**
+     * Create model.
+     *
+     * @param array $attributes
+     * @return mixed
+     */
+    public function create(array $attributes);
 
     /**
      * Load relations.
@@ -36,4 +42,12 @@ interface BasicServiceContract
      * @return $this
      */
     public function with($relations);
+
+    /**
+     * Load count relations.
+     *
+     * @var array|string $relations
+     * @return $this
+     */
+    public function withCount($relations);
 }

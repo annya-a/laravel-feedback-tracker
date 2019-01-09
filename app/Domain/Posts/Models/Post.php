@@ -5,7 +5,7 @@ namespace App\Domain\Posts\Models;
 use App\Domain\Comments\Models\Comment;
 use App\Domain\Votes\HasVotes\HasVotesModelContract;
 use App\Domain\Votes\HasVotes\HasVotesModelTrait;
-use Illuminate\Database\Eloquent\Model;
+use App\Core\Database\Eloquent\Model;
 use App\Domain\Categories\Models\Category;
 use App\Domain\Users\Models\User;
 

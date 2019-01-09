@@ -21,7 +21,7 @@ class HomeController extends Controller
      *
      * @var int
      */
-    const POST_STATUS_NUMBER = 7;
+    const POSTS_BY_STATUS_NUMBER = 7;
 
     /**
      * Category Service.
@@ -40,6 +40,7 @@ class HomeController extends Controller
 
     /**
      * HomeController constructor.
+     *
      * @param CategoryServiceContract $serviceContract
      * @param PostServiceContract $postService
      */
@@ -56,26 +57,32 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $categories = $this->category_service
-            ->withCount('posts')
-            ->limit(static::CATEGORY_NUMBER)
-            ->get();
+        $categories = $this->category_service->withCount('posts')
+            ->getList(static::CATEGORY_NUMBER);
 
+        $postsByStatus = $this->getPostsByStatuses();
+
+        return view('home.index', compact('categories', 'postsByStatus'));
+    }
+
+    /**
+     * Get posts by statuses.
+     */
+    private function getPostsByStatuses()
+    {
         $statuses = [
             PostServiceContract::STATUS_PLANNED,
             PostServiceContract::STATUS_IN_PROGRESS,
             PostServiceContract::STATUS_COMPLETED
         ];
 
-        $postsByStatus = [];
+        $posts = [];
         foreach ($statuses as $status) {
-            $postsByStatus[$status] = $this->post_service->where('status', $status)
-                ->with('category')
+            $posts[$status] = $this->post_service->with('category')
                 ->withCount('votes')
-                ->limit(static::POST_STATUS_NUMBER)
-                ->get();
+                ->getListByStatus($status, static::POSTS_BY_STATUS_NUMBER);
         }
 
-        return view('home.index', compact('categories', 'postsByStatus'));
+        return $posts;
     }
 }

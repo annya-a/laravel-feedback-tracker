@@ -19,4 +19,21 @@ class PostService extends BasicService implements PostServiceContract
     {
         return Post::class;
     }
+
+    /**
+     * Get collection of posts by status.
+     *
+     * @param $status
+     * @param int $limit
+     * @return mixed
+     */
+    public function getListByStatus($status, int $limit = 0) {
+        $result = $this->builder->where('status', $status)
+            ->limit($limit)
+            ->get();
+
+        $this->resetBuilder();
+
+        return $result;
+    }
 }

@@ -2,8 +2,8 @@
 
 namespace App\Domain\Categories\Models;
 
+use App\Core\Database\Eloquent\Model;
 use App\Domain\Posts\Models\Post;
-use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
