@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\Posts\PostController;
 use App\Http\Controllers\Comments\CommentController;
-use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Votes\VoteController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Categories\CategoryController;
@@ -23,10 +22,6 @@ Route::resource('/comments', CommentController::class)->only([
 Route::resource('/categories', CategoryController::class)->only([
     'show'
 ]);
-
-// Authentication.
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login']);
 
 // Homepage.
 Route::get('/', [HomeController::class, 'index']);

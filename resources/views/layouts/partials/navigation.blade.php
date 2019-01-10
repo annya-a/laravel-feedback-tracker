@@ -7,11 +7,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                @guest
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">Log In</a>
-                    </li>
-                @endguest
+                <li class="nav-item">
+                    <a class="nav-link" href="">Test</a>
+                </li>
             </ul>
         </div>
     </div>
