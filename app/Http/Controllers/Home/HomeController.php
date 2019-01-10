@@ -14,7 +14,7 @@ class HomeController extends Controller
      *
      * @var int
      */
-    const CATEGORY_NUMBER = 10;
+    const CATEGORY_NUMBER = 9;
 
     /**
      * Number of post for each status.
@@ -58,7 +58,7 @@ class HomeController extends Controller
     public function index()
     {
         $categories = $this->category_service->withCount('posts')
-            ->getList(static::CATEGORY_NUMBER);
+            ->getCategories(static::CATEGORY_NUMBER);
 
         $postsByStatus = $this->getPostsByStatuses();
 
@@ -78,9 +78,10 @@ class HomeController extends Controller
 
         $posts = [];
         foreach ($statuses as $status) {
-            $posts[$status] = $this->post_service->with('category')
+            $listByStatus = $this->post_service->with('category')
                 ->withCount('votes')
-                ->getListByStatus($status, static::POSTS_BY_STATUS_NUMBER);
+                ->getPostsByStatus($status, static::POSTS_BY_STATUS_NUMBER);
+            $posts[$status] = $listByStatus;
         }
 
         return $posts;

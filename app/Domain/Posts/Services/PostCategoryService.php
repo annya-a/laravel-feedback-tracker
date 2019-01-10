@@ -25,7 +25,9 @@ class PostCategoryService extends BasicService implements PostCategoryServiceCon
      */
     public function getPostsByCategoryPaginated($category_id, $limit)
     {
-        $result = $this->builder->where('category_id', $category_id)->paginate($limit);
+        $result = $this->builder->where('category_id', $category_id)
+            ->orderBy('created_at')
+            ->paginate($limit);
 
         $this->resetBuilder();
 

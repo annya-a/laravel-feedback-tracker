@@ -23,9 +23,9 @@ class CategoryService extends BasicService implements CategoryServiceContract
      * @param int $limit
      * @return mixed
      */
-    public function getList(int $limit = 0)
+    public function getCategories(int $limit = 0)
     {
-        $result = $this->builder->limit($limit)->get();
+        $result = $this->builder->limit($limit)->orderBy('title', 'asc')->get();
 
         $this->resetBuilder();
 

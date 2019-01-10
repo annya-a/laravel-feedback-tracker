@@ -27,8 +27,9 @@ class PostService extends BasicService implements PostServiceContract
      * @param int $limit
      * @return mixed
      */
-    public function getListByStatus($status, int $limit = 0) {
+    public function getPostsByStatus($status, int $limit = 0) {
         $result = $this->builder->where('status', $status)
+            ->orderBy('created_at', 'desc')
             ->limit($limit)
             ->get();
 

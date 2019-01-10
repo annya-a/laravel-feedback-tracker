@@ -12,5 +12,5 @@ interface CategoryServiceContract extends BasicServiceContract
      * @param int $limit
      * @return mixed
      */
-    public function getList(int $limit = 0);
+    public function getCategories(int $limit = 0);
 }
