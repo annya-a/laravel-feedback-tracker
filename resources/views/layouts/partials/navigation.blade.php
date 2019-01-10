@@ -8,7 +8,8 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="">Test</a>
+                    <img src="{{ asset($currentUser->getFirstMediaUrl('avatar', 'thumb')) }}" />
+                    <div>{{ $currentUser->name }}</div>
                 </li>
             </ul>
         </div>

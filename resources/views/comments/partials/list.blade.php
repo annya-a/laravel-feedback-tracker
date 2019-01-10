@@ -1,6 +1,8 @@
 @foreach($comments as $comment)
     <div class="row">
         <div class="col offset-1">
+            <img src="{{ asset($comment->user->getFirstMediaUrl('avatar', 'thumb')) }}" />
+
             <div class="font-weight-bold">
                 {{ $comment->user->name }}
             </div>

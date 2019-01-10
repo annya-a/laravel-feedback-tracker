@@ -80,7 +80,7 @@ class PostController extends Controller
      */
     private function showLoadPost($id)
     {
-        return $this->post_service->with(['user', 'comments', 'comments.user'])
+        return $this->post_service->with(['user', 'comments', 'comments.user', 'comments.user.media'])
             ->withVotes()
             ->findOrFail($id);
     }

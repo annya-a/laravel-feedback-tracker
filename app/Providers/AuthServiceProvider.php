@@ -4,9 +4,20 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Contracts\View\Factory as FactoryContract;
+use App\Http\Views\Composers\CurrentUser;
 
 class AuthServiceProvider extends ServiceProvider
 {
+     /**
+     * AuthServiceProvider constructor.
+     * @param $app
+     */
+    public function __construct($app)
+    {
+        parent::__construct($app);
+    }
+
     /**
      * The policy mappings for the application.
      *
@@ -21,11 +32,11 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(FactoryContract $viewFactory)
     {
         $this->registerPolicies();
 
-        //
+        $viewFactory->composer('*', CurrentUser::class);
     }
 
     /**

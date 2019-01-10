@@ -42,7 +42,6 @@ class AutoLogin
      */
     public function handle($request, Closure $next)
     {
-        // If user is a guest we log in him as random user.
         if ($this->auth_service->guest() && $user = $this->user_service->getRandomUser()) {
             $this->auth_service->login($user);
         }
