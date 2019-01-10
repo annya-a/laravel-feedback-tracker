@@ -8,7 +8,7 @@ class VoteValidator extends LaravelValidator {
 
     protected $rules = [
         'post' => [
-            'reqired' => 'required',
+            'required' => 'required',
             'exists' => 'exists:posts,id',
         ],
     ];

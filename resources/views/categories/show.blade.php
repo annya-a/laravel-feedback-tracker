@@ -6,13 +6,14 @@
         <div class="card-body">
             <h6 class="card-subtitle mb-2 text-muted">Create Post</h6>
 
-            @include('posts.forms.create')
+            @include('posts.forms.create', ['category' => $category])
         </div>
     </div>
 @endsection
 
 {{-- Main --}}
 @section('layouts.left.main')
+    <h3>{{ $category->title }}</h3>
     @foreach($posts as $post)
         <div class="row">
             <div class="col-1">
@@ -28,7 +29,5 @@
         </div>
     @endforeach
 
-    <nav aria-label="Page navigation example">
     {{ $posts->links() }}
-    </nav>
 @endsection

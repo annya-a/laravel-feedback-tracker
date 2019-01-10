@@ -24,6 +24,8 @@ class Post extends Model implements HasVotesModelContract
 {
     use HasVotesModelTrait;
 
+    protected $fillable = ['title', 'details', 'user_id', 'category_id', 'status'];
+
     /**
      * Category relation.
      *

@@ -13,6 +13,8 @@
     'value' => old('details'),
     ])
 
+    @include('layouts.form.elements.hidden', ['name' => 'category_id', 'value' => $category->id])
+
     @include('layouts.form.elements.button', [
     'label' => 'Create Post',
     'class' => 'btn-primary',

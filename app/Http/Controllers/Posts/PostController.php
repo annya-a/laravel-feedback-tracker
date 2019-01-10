@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Posts;
 
+use App\Http\Requests\Posts\PostStoreRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Domain\Posts\Services\PostServiceContract;
@@ -38,27 +39,20 @@ class PostController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index($category_id)
-    {
-        $posts = $this->post_service->with(['category'])
-            ->paginate(self::ITEMS_PER_PAGE);
-
-        return view('posts.index', compact('posts'));
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param PostStoreRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(PostStoreRequest $request)
     {
-        //
+        $attributes = $request->only(['title', 'details', 'category_id']);
+        $attributes['status'] = PostServiceContract::STATUS_PLANNED;
+        $attributes['user_id'] = $request->user()->id;
+
+        $this->post_service->create($attributes);
+
+        return redirect()->route('categories.show', ['category' => $request->category_id]);
     }
 
     /**
