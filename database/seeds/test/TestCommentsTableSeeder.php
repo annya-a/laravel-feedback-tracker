@@ -11,6 +11,6 @@ class TestCommentsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Domain\Comments\Models\Comment::class, 10)->create();
+        factory(App\Domain\Comments\Models\Comment::class, 100)->create();
     }
 }
