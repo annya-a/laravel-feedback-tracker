@@ -1,9 +1,17 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Domain\Categories\Models\Category;
 
 class TestCategoriesTalbeSeeder extends Seeder
 {
+    /**
+     * Numbers of categories to generate.
+     *
+     * @var int
+     */
+    const CATEGORY_NUMBER = 9;
+
     /**
      * Run the database seeds.
      *
@@ -11,6 +19,9 @@ class TestCategoriesTalbeSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Domain\Categories\Models\Category::class, 10)->create();
+        $count = Category::count();
+        if ($count < static::CATEGORY_NUMBER) {
+            factory(Category::class, (static::CATEGORY_NUMBER - $count))->create();
+        }
     }
 }

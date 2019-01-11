@@ -10,18 +10,11 @@ use App\Domain\Categories\Services\CategoryServiceContract;
 class HomeController extends Controller
 {
     /**
-     * Items of categogories to show on main page.
-     *
-     * @var int
-     */
-    const CATEGORY_NUMBER = 9;
-
-    /**
      * Number of post for each status.
      *
      * @var int
      */
-    const POSTS_BY_STATUS_NUMBER = 7;
+    const POSTS_BY_STATUS_NUMBER = 5;
 
     /**
      * Category Service.
@@ -58,7 +51,7 @@ class HomeController extends Controller
     public function index()
     {
         $categories = $this->category_service->withCount('posts')
-            ->getCategories(static::CATEGORY_NUMBER);
+            ->getCategories();
 
         $postsByStatus = $this->getPostsByStatuses();
 

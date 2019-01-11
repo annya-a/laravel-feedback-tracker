@@ -25,7 +25,11 @@ class CategoryService extends BasicService implements CategoryServiceContract
      */
     public function getCategories(int $limit = 0)
     {
-        $result = $this->builder->limit($limit)->orderBy('title', 'asc')->get();
+        if ($limit) {
+            $this->builder->limit($limit);
+        }
+
+        $result = $this->builder->orderBy('title', 'asc')->get();
 
         $this->resetBuilder();
 
