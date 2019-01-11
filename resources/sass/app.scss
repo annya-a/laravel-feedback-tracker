@@ -11,6 +11,11 @@
 
 // Master
 @import 'categories';
+@import 'comments';
 @import 'nav';
 @import 'posts';
+@import 'user';
+@import 'voters';
+
+// Components.
 @import 'components/buttons';

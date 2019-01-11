@@ -8,14 +8,14 @@ use App\Http\Controllers\Categories\CategoryController;
 
 // Posts.
 Route::resource('/posts', PostController::class)->only([
-    'index', 'show', 'store'
+    'show', 'store',
 ]);
 
 Route::post('/posts/{post}/vote', [VoteController::class, 'vote'])->name('posts.vote');
 
 // Comments.
 Route::resource('/comments', CommentController::class)->only([
-    'store', 'edit'
+    'store'
 ]);
 
 // Comments.

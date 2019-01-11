@@ -25,8 +25,14 @@ trait HasVotesServiceTrait
         return $this;
     }
 
-    public function getVoters(int $id)
+    /**
+     * Count voters for model.
+     *
+     * @param int $id
+     * @return int
+     */
+    public function countVoters(int $id)
     {
-        return $this->builder->find($id)->voters;
+        return $this->builder->withCount('voters')->find($id)->voters_count;
     }
 }

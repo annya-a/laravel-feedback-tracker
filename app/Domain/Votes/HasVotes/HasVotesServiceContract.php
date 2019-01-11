@@ -12,5 +12,11 @@ interface HasVotesServiceContract
      */
     public function withVotes();
 
-    public function getVoters(int $id);
+    /**
+     * Count voters for model.
+     *
+     * @param int $id
+     * @return int
+     */
+    public function countVoters(int $id);
 }

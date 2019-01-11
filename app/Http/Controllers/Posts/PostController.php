@@ -19,7 +19,7 @@ class PostController extends Controller
     /**
      * Voters amount to show,
      */
-    const VOTERS_AMOUNT = 10;
+    const VOTERS_NUMBER = 10;
 
     /**
      * Post service.
@@ -67,9 +67,10 @@ class PostController extends Controller
         $post = $this->showLoadPost($id);
 
         // Get voters for post.
-        $voters = $this->post_service->getVoters($id);
+        $voters = $post->voters;
+        $voters_left = $this->post_service->countVoters($id) - static::VOTERS_NUMBER;
 
-        return view('posts.show', compact('post', 'voters'));
+        return view('posts.show', compact('post', 'voters', 'voters_left'));
     }
 
     /**
@@ -80,7 +81,8 @@ class PostController extends Controller
      */
     private function showLoadPost($id)
     {
-        return $this->post_service->with(['user', 'comments', 'comments.user', 'comments.user.media'])
+        return $this->post_service->with(['user', 'comments', 'comments.user', 'comments.user.media', 'voters.media'])
+            ->withLimit('voters', static::VOTERS_NUMBER)
             ->withVotes()
             ->findOrFail($id);
     }

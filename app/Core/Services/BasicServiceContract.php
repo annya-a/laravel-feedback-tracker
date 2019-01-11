@@ -44,6 +44,16 @@ interface BasicServiceContract
     public function with($relations);
 
     /**
+     * Load relations with limit.
+     *
+     *
+     * @var array|string $relations
+     * @param int $limit
+     * @return $this
+     */
+    public function withLimit($relations, $limit = 0);
+
+    /**
      * Load count relations.
      *
      * @var array|string $relations

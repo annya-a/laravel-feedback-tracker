@@ -15669,6 +15669,10 @@ a.text-dark:focus {
   margin-bottom: 50px;
 }
 
+.comments-list .comment-item {
+  margin-bottom: 1rem;
+}
+
 #mainNav {
   position: static;
   border-bottom: 1px solid #eee;
@@ -15695,6 +15699,14 @@ a.text-dark:focus {
 
 .home-posts .post-item {
   margin-bottom: 20px;
+}
+
+.avatar-sm {
+  width: 24px;
+}
+
+.voters-list .voter-item {
+  margin-bottom: 1rem;
 }
 
 .btn-slight {

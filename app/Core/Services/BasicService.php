@@ -102,6 +102,23 @@ abstract class BasicService implements BasicServiceContract
     }
 
     /**
+     * Load relations with limit.
+     *
+     *
+     * @var array|string $relations
+     * @param int $limit
+     * @return $this
+     */
+    public function withLimit($relations, $limit = 0)
+    {
+        $this->builder->with([$relations => function($query) use ($limit) {
+            $query->limit($limit);
+        }]);
+
+        return $this;
+    }
+
+    /**
      * Load count relations.
      *
      * @var array|string $relations
