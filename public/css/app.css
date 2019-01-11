@@ -15665,6 +15665,10 @@ a.text-dark:focus {
   }
 }
 
+.home-menu-categories {
+  margin-bottom: 50px;
+}
+
 #mainNav {
   position: static;
   border-bottom: 1px solid #eee;
@@ -15683,5 +15687,64 @@ a.text-dark:focus {
 
 #mainNav .navbar-nav > li.nav-item > a {
   color: #333333;
+}
+
+.nav-item-avatar img {
+  width: 40px;
+}
+
+.home-posts .post-item {
+  margin-bottom: 20px;
+}
+
+.btn-slight {
+  color: #bfbfbf;
+  background-color: #FFFFFF;
+  border-color: #bfbfbf;
+}
+
+.btn-slight:hover,
+.btn-slight:focus,
+.btn-slight:active,
+.btn-slight.active,
+.open .dropdown-toggle.btn-slight {
+  color: #a8a8a8;
+  background-color: #fff;
+  border-color: #a8a8a8;
+}
+
+.btn-slight:active,
+.btn-slight.active,
+.open .dropdown-toggle.btn-slight {
+  background-image: none;
+}
+
+.btn-slight.disabled,
+.btn-slight[disabled],
+fieldset[disabled] .btn-slight,
+.btn-slight.disabled:hover,
+.btn-slight[disabled]:hover,
+fieldset[disabled] .btn-slight:hover,
+.btn-slight.disabled:focus,
+.btn-slight[disabled]:focus,
+fieldset[disabled] .btn-slight:focus,
+.btn-slight.disabled:active,
+.btn-slight[disabled]:active,
+fieldset[disabled] .btn-slight:active,
+.btn-slight.disabled.active,
+.btn-slight[disabled].active,
+fieldset[disabled] .btn-slight.active {
+  background-color: #fff;
+  border-color: rgba(0, 0, 0, 0.125);
+}
+
+.btn-slight .badge {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.125);
+}
+
+.btn-middle {
+  padding: 0.25rem 0.7rem;
+  line-height: 1.2;
 }
 

@@ -7,9 +7,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <img src="{{ asset($currentUser->getFirstMediaUrl('avatar', 'thumb')) }}" />
-                    <div>{{ $currentUser->name }}</div>
+                <li class="nav-item row nav-item-avatar">
+                    <div class="col-2">
+                        <img class="rounded-circle" src="{{ asset($currentUser->getFirstMediaUrl('avatar', 'thumb')) }}" />
+                    </div>
+                    <div class="col">
+                        <div>{{ $currentUser->name }}</div>
+                        <div class="text-muted">{{ $currentUser->email }}</div>
+                    </div>
+
                 </li>
             </ul>
         </div>

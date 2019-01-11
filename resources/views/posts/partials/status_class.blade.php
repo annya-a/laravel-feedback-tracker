@@ -1,6 +1,6 @@
 @switch($status)
     @case(0)
-    text-primary
+    text-secondary
     @break
 
     @case(1)

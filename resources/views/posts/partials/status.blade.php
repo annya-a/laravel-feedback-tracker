@@ -1,5 +1,5 @@
 @if($status == 0)
-    Planned
+    Todo
 @elseif($status == 1)
     In Progress
 @elseif($status == 2)
