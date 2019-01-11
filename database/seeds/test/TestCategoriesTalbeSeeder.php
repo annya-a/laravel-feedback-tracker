@@ -12,10 +12,14 @@ class TestCategoriesTalbeSeeder extends Seeder
      */
     public function run()
     {
-        $categories = ['Bugs', 'Features', 'Improvements'];
+        $categories = [
+            'bugs' => 'Bugs',
+            'features' => 'Features',
+            'improvements' => 'Improvements'
+        ];
 
-        foreach ($categories as $category) {
-            Category:: firstOrCreate(['title' => $category]);
+        foreach ($categories as $name => $title) {
+            Category:: firstOrCreate(['name' => $name, 'title' => $title]);
         }
     }
 }

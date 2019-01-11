@@ -11,6 +11,6 @@ class TestVotesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Domain\Votes\Models\Vote::class, 50)->create();
+        factory(App\Domain\Votes\Models\Vote::class, 3000)->create();
     }
 }

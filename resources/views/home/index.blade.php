@@ -1,24 +1,17 @@
 @extends('layouts.master')
 
 @section('layouts.master.content')
-    {{--Categories --}}
-    <h3>Give Feedback</h3>
-
     @foreach($categories->chunk(3) as $chunk)
         <div class="row">
             @foreach($chunk as $category)
                 <div class="col col-4">
-                    <a href="{{ route('categories.show', $category->id) }}">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-9">
-                                        {{ $category->title }}
-                                    </div>
-                                    <div class="col">
-                                        {{ $category->posts_count }}
-                                    </div>
-                                </div>
+                    <a href="{{ route('categories.show', $category->id) }}" class="btn btn-block @include('categories.partials.button_class', ['name' => $category->name])">
+                        <div class="row">
+                            <div class="col-9 text-left font-weight-bold">
+                                {{ $category->title }}
+                            </div>
+                            <div class="col text-right text-small">
+                                {{ $category->posts_count }}
                             </div>
                         </div>
                     </a>
@@ -28,7 +21,7 @@
     @endforeach
 
     {{-- Roadmap --}}
-    <h3>Roadmap</h3>
+    <h3>Issues</h3>
     <div class="row">
         @foreach($postsByStatus as $status => $posts)
             <div class="col-4">

@@ -1,7 +1,13 @@
-@if($status == 0)
+@switch($status)
+    @case(0)
     text-primary
-@elseif($status == 1)
+    @break
+
+    @case(1)
     text-info
-@elseif($status == 2)
+    @break
+
+    @case(2)
     text-success
-@endif
+    @break
+@endswitch
