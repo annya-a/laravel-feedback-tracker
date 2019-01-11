@@ -14,7 +14,7 @@ class HomeController extends Controller
      *
      * @var int
      */
-    const POSTS_BY_STATUS_NUMBER = 5;
+    const POSTS_BY_STATUS_NUMBER = 6;
 
     /**
      * Category Service.
