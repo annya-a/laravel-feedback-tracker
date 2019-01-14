@@ -1,4 +1,3 @@
-
 <div class="control-group">
     <div class="form-group floating-label-form-group controls">
         @yield('layouts.form.element.content')

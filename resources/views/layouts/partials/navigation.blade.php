@@ -8,7 +8,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item row nav-item-avatar">
-                    <div class="col-2">
+                    <div class="col-2 mr-2">
                         <img class="rounded-circle" src="{{ asset($currentUser->getFirstMediaUrl('avatar', 'thumb')) }}" />
                     </div>
                     <div class="col">

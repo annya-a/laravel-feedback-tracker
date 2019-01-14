@@ -2,13 +2,13 @@
     @csrf
 
     @include('layouts.form.elements.text', [
-    'label' => 'Title',
+    'placeholder' => __('Title'),
     'name' => 'title',
     'value' => old('title'),
     ])
 
     @include('layouts.form.elements.textarea', [
-    'label' => 'Details',
+    'placeholder' => __('Details'),
     'name' => 'details',
     'value' => old('details'),
     ])
@@ -16,7 +16,7 @@
     @include('layouts.form.elements.hidden', ['name' => 'category_id', 'value' => $category->id])
 
     @include('layouts.form.elements.button', [
-    'label' => 'Create Post',
+    'label' => __('Create Post'),
     'class' => 'btn-primary',
     ])
 </form>

@@ -1,9 +1,11 @@
 @extends('layouts.form.element')
 
 @section('layouts.form.element.content')
-    <label>
-        {{ $label }}
-    </label>
+    @isset($label)
+        <label>
+            {{ $label }}
+        </label>
+    @endisset
 
-    <input name="{{ $name }}" type="text" value="{{ $value }}">
+    <input class="form-control" name="{{ $name }}" type="text" value="{{ $value }}" @isset($placeholder) placeholder="{{ $placeholder }}" @endisset>
 @overwrite
