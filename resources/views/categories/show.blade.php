@@ -1,4 +1,4 @@
-@extends('layouts.left')
+@extends('layouts.left', ['page_title' => $category->title])
 
 {{-- Left --}}
 @section('layouts.left.left')

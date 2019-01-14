@@ -1,4 +1,4 @@
-@extends('layouts.left')
+@extends('layouts.left', ['page_title' => $post->title])
 
 {{-- Sidebar --}}
 @section('layouts.left.left')
