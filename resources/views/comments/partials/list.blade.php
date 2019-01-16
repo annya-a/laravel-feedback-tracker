@@ -12,7 +12,7 @@
                 {{ $comment->text }}
             </div>
             <div class="meta text-muted small">
-                {{ $comment->created_at->format('F d, Y') }}
+                {{ $comment->created_at->diffForHumans() }}
             </div>
         </div>
     </div>

@@ -59,7 +59,7 @@
             </div>
 
             <div class="meta text-muted small">
-                {{ $post->created_at->format('F d, Y') }}
+                {{ $post->created_at->diffForHumans() }}
             </div>
         </div>
     </div>
