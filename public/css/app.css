@@ -15750,6 +15750,52 @@ fieldset[disabled] .btn-slight.active {
   border-color: rgba(0, 0, 0, 0.125);
 }
 
+.btn-dark-danger {
+  color: #ffffff;
+  background-color: #8F1A2D;
+  border-color: #8F1A2D;
+}
+
+.btn-dark-danger:hover,
+.btn-dark-danger:focus,
+.btn-dark-danger:active,
+.btn-dark-danger.active,
+.open .dropdown-toggle.btn-dark-danger {
+  color: #ffffff;
+  background-color: #751525;
+  border-color: #8F1A2D;
+}
+
+.btn-dark-danger:active,
+.btn-dark-danger.active,
+.open .dropdown-toggle.btn-dark-danger {
+  background-image: none;
+}
+
+.btn-dark-danger.disabled,
+.btn-dark-danger[disabled],
+fieldset[disabled] .btn-dark-danger,
+.btn-dark-danger.disabled:hover,
+.btn-dark-danger[disabled]:hover,
+fieldset[disabled] .btn-dark-danger:hover,
+.btn-dark-danger.disabled:focus,
+.btn-dark-danger[disabled]:focus,
+fieldset[disabled] .btn-dark-danger:focus,
+.btn-dark-danger.disabled:active,
+.btn-dark-danger[disabled]:active,
+fieldset[disabled] .btn-dark-danger:active,
+.btn-dark-danger.disabled.active,
+.btn-dark-danger[disabled].active,
+fieldset[disabled] .btn-dark-danger.active {
+  background-color: #8F1A2D;
+  border-color: #8F1A2D;
+}
+
+.btn-dark-danger .badge {
+  color: #8F1A2D;
+  background-color: #ffffff;
+}
+
 .btn-slight .badge {
   color: #fff;
   background-color: rgba(0, 0, 0, 0.125);

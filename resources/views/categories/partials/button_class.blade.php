@@ -1,6 +1,6 @@
 @switch($name)
     @case('bugs')
-    btn-secondary
+    btn-dark-danger
     @break
 
     @case('features')
