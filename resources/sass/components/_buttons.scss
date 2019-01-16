@@ -97,3 +97,10 @@ fieldset[disabled] .btn-dark-danger.active {
   padding: 0.25rem 0.7rem;
   line-height: 1.2;
 }
+
+// Vote button.
+.btn-vote[disabled] {
+  color: #bfbfbf;
+  border-color: #bfbfbf;
+  opacity: 1;
+}

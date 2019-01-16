@@ -15806,6 +15806,12 @@ fieldset[disabled] .btn-dark-danger.active {
   line-height: 1.2;
 }
 
+.btn-vote[disabled] {
+  color: #bfbfbf;
+  border-color: #bfbfbf;
+  opacity: 1;
+}
+
 hr {
   border-top: 1px solid #eee;
 }
