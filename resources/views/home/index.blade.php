@@ -26,7 +26,7 @@
         @foreach($postsByStatus as $status => $posts)
             <div class="col-4 home-posts">
                 <div class="card">
-                    <div class="card-header font-weight-bold @include('posts.partials.status_class', ['status' => $status])">
+                    <div class="card-header font-weight-bold text-secondary">
                         @include('posts.partials.status', ['status' => $status])
                     </div>
                     <div class="card-body">

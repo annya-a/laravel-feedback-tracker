@@ -1,13 +1,13 @@
 @switch($name)
     @case('bugs')
-    btn-dark-danger
+    btn-bugs
     @break
 
     @case('features')
-    btn-primary
+    btn-features
     @break
 
     @case('improvements')
-    btn-success
+    btn-improvements
     @break
 @endswitch

@@ -104,3 +104,144 @@ fieldset[disabled] .btn-dark-danger.active {
   border-color: #bfbfbf;
   opacity: 1;
 }
+
+// Bugs buttons.
+.btn-bugs {
+  color: #ffffff;
+  background-color: #1D3F72;
+  border-color: #1D3F72;
+}
+
+.btn-bugs:hover,
+.btn-bugs:focus,
+.btn-bugs:active,
+.btn-bugs.active,
+.open .dropdown-toggle.btn-bugs {
+  color: #ffffff;
+  background-color: #17335C;
+  border-color: #1D3F72;
+}
+
+.btn-bugs:active,
+.btn-bugs.active,
+.open .dropdown-toggle.btn-bugs {
+  background-image: none;
+}
+
+.btn-bugs.disabled,
+.btn-bugs[disabled],
+fieldset[disabled] .btn-bugs,
+.btn-bugs.disabled:hover,
+.btn-bugs[disabled]:hover,
+fieldset[disabled] .btn-bugs:hover,
+.btn-bugs.disabled:focus,
+.btn-bugs[disabled]:focus,
+fieldset[disabled] .btn-bugs:focus,
+.btn-bugs.disabled:active,
+.btn-bugs[disabled]:active,
+fieldset[disabled] .btn-bugs:active,
+.btn-bugs.disabled.active,
+.btn-bugs[disabled].active,
+fieldset[disabled] .btn-bugs.active {
+  background-color: #1D3F72;
+  border-color: #1D3F72;
+}
+
+.btn-bugs .badge {
+  color: #1D3F72;
+  background-color: #ffffff;
+}
+
+// Features buttons.
+.btn-features {
+  color: #ffffff;
+  background-color: #5699D2;
+  border-color: #5699D2;
+}
+
+.btn-features:hover,
+.btn-features:focus,
+.btn-features:active,
+.btn-features.active,
+.open .dropdown-toggle.btn-features {
+  color: #ffffff;
+  background-color: #4A84B8;
+  border-color: #5699D2;
+}
+
+.btn-features:active,
+.btn-features.active,
+.open .dropdown-toggle.btn-features {
+  background-image: none;
+}
+
+.btn-features.disabled,
+.btn-features[disabled],
+fieldset[disabled] .btn-features,
+.btn-features.disabled:hover,
+.btn-features[disabled]:hover,
+fieldset[disabled] .btn-features:hover,
+.btn-features.disabled:focus,
+.btn-features[disabled]:focus,
+fieldset[disabled] .btn-features:focus,
+.btn-features.disabled:active,
+.btn-features[disabled]:active,
+fieldset[disabled] .btn-features:active,
+.btn-features.disabled.active,
+.btn-features[disabled].active,
+fieldset[disabled] .btn-features.active {
+  background-color: #5699D2;
+  border-color: #5699D2;
+}
+
+.btn-features .badge {
+  color: #5699D2;
+  background-color: #ffffff;
+}
+
+// Improvements buttons.
+.btn-improvements {
+  color: #ffffff;
+  background-color: #785471;
+  border-color: #785471;
+}
+
+.btn-improvements:hover,
+.btn-improvements:focus,
+.btn-improvements:active,
+.btn-improvements.active,
+.open .dropdown-toggle.btn-improvements {
+  color: #ffffff;
+  background-color: #664660;
+  border-color: #785471;
+}
+
+.btn-improvements:active,
+.btn-improvements.active,
+.open .dropdown-toggle.btn-improvements {
+  background-image: none;
+}
+
+.btn-improvements.disabled,
+.btn-improvements[disabled],
+fieldset[disabled] .btn-improvements,
+.btn-improvements.disabled:hover,
+.btn-improvements[disabled]:hover,
+fieldset[disabled] .btn-improvements:hover,
+.btn-improvements.disabled:focus,
+.btn-improvements[disabled]:focus,
+fieldset[disabled] .btn-improvements:focus,
+.btn-improvements.disabled:active,
+.btn-improvements[disabled]:active,
+fieldset[disabled] .btn-improvements:active,
+.btn-improvements.disabled.active,
+.btn-improvements[disabled].active,
+fieldset[disabled] .btn-improvements.active {
+  background-color: #785471;
+  border-color: #785471;
+}
+
+.btn-improvements .badge {
+  color: #785471;
+  background-color: #ffffff;
+}
