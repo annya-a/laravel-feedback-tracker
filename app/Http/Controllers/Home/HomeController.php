@@ -71,8 +71,8 @@ class HomeController extends Controller
 
         $posts = [];
         foreach ($statuses as $status) {
-            $listByStatus = $this->post_service->with('category')
-                ->withCount('votes')
+            $listByStatus = $this->post_service->with(['category', 'user'])
+                ->withVotes()
                 ->getPostsByStatus($status, static::POSTS_BY_STATUS_NUMBER);
             $posts[$status] = $listByStatus;
         }

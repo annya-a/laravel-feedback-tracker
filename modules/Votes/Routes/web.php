@@ -11,4 +11,6 @@
 |
 */
 
+use Modules\Votes\Http\Controllers\VotesController;
+
 Route::post('/posts/{post}/vote', [VotesController::class, 'vote'])->name('posts.vote');
