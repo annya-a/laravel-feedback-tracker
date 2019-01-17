@@ -87,9 +87,7 @@ class VotesServiceProvider extends ServiceProvider
      */
     public function registerFactories()
     {
-        if (! app()->environment('production')) {
-            app(Factory::class)->load(__DIR__ . '/../Database/factories');
-        }
+        app(Factory::class)->load(__DIR__ . '/../Database/factories');
     }
 
     /**
