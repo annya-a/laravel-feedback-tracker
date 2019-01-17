@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Home;
 
-use App\Domain\Posts\Services\PostServiceContract;
+use Modules\Posts\Services\PostServiceContract;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Domain\Categories\Services\CategoryServiceContract;
+use Modules\Categories\Services\CategoryServiceContract;
 
 class HomeController extends Controller
 {
