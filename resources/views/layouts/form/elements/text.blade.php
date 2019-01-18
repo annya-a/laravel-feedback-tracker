@@ -7,5 +7,10 @@
         </label>
     @endisset
 
-    <input class="form-control" name="{{ $name }}" type="text" value="{{ $value }}" @isset($placeholder) placeholder="{{ $placeholder }}" @endisset>
+    <input class="form-control @if ($errors->has($name)) is-invalid @endif"
+           name="{{ $name }}"
+           type="text"
+           value="{{ $value }}"
+           @isset($placeholder) placeholder="{{ $placeholder }}" @endisset
+    >
 @overwrite
