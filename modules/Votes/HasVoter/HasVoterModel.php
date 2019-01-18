@@ -3,6 +3,7 @@
 namespace Modules\Votes\HasVoter;
 
 use Modules\Posts\Entities\Post;
+use Modules\Votes\Entities\Vote;
 
 trait HasVoterModel
 {
@@ -13,6 +14,6 @@ trait HasVoterModel
      */
     public function postVotes()
     {
-        return $this->belongsToMany(Post::class, 'votes');
+        return $this->hasManyThrough(Post::class, Vote::class, 'user_id', 'id', 'id', 'post_id');
     }
 }

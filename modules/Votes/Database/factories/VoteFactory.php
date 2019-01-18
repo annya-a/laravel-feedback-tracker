@@ -3,10 +3,11 @@
 use Faker\Generator as Faker;
 use Modules\Users\Entities\User;
 use Modules\Posts\Entities\Post;
+use Modules\Votes\Entities\Vote;
 
-$factory->define(Modules\Votes\Entities\Vote::class, function (Faker $faker) {
+$factory->define(Vote::class, function (Faker $faker, $attributes) {
     return [
-        'post_id' => Post::inRandomOrder()->first()->id,
-        'user_id' => User::inRandomOrder()->first()->id,
+        'post_id' => $attributes['post_id'],
+        'user_id' => $attributes['user_id'],
     ];
 });

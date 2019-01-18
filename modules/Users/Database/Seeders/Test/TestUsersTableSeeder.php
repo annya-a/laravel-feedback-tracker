@@ -16,7 +16,7 @@ class TestUsersTableSeeder extends Seeder
      */
     public function run(Image $image)
     {
-        factory(User::class, 10)
+        factory(User::class, 50)
             ->create()
             ->each(function (User $user) use ($image) {
                 $user->addMediaFromUrl($image->generateUrl($user->email, 500))->toMediaCollection('avatar');
