@@ -12,5 +12,8 @@
 */
 
 use Modules\Votes\Http\Controllers\VotesController;
+use Modules\Votes\Http\Controllers\VotersController;
 
 Route::post('/posts/{post}/vote', [VotesController::class, 'vote'])->name('posts.vote');
+
+Route::get('/posts/{post}/voters', [VotersController::class, 'index'])->name('posts.voters');

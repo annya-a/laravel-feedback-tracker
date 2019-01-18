@@ -7,20 +7,11 @@
             Voters
         </div>
         <div class="card-body voters-list">
-            @foreach($voters as $voter)
-                <div class="row voter-item">
-                    <div class="col-1">
-                        <img class="rounded-circle avatar-sm" src="{{ asset($voter->getFirstMediaUrl('avatar', 'thumb')) }}" />
-                    </div>
-                    <div class="col">
-                        {{ $voter->name }}
-                    </div>
-                </div>
-            @endforeach
+            @include('votes::voters.partials.list', ['voters' => $post->voters])
         </div>
         @if ($voters_left > 0)
             <div class="card-footer text-muted">
-                and {{ $voters_left }} more
+                <a href="{{ route('posts.voters', ['post' => $post]) }}" class="text-dark">and {{ $voters_left }} more</a>
             </div>
         @endif
     </div>

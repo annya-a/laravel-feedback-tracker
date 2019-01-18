@@ -68,10 +68,9 @@ class PostsController extends Controller
         $post = $this->showLoadPost($id);
 
         // Get voters for post.
-        $voters = $post->voters;
         $voters_left = $this->post_service->countVoters($id) - static::VOTERS_NUMBER;
 
-        return view('posts::show', compact('post', 'voters', 'voters_left'));
+        return view('posts::show', compact('post', 'voters_left'));
     }
 
     /**
