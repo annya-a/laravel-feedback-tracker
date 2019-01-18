@@ -81,8 +81,9 @@ class PostsController extends Controller
      */
     private function showLoadPost($id)
     {
-        return $this->post_service->with(['user', 'comments', 'comments.user', 'comments.user.media', 'voters.media'])
-            ->withLimit('voters', static::VOTERS_NUMBER)
+        return $this->post_service->with(['user', 'comments.user', 'comments.user.media', 'voters.media'])
+            ->withConditions('comments', ['field' => 'created_at', 'order' => 'desc'])
+            ->withConditions('voters', [], static::VOTERS_NUMBER)
             ->withVotes()
             ->findOrFail($id);
     }

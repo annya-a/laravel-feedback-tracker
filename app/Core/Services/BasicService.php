@@ -102,23 +102,6 @@ abstract class BasicService implements BasicServiceContract
     }
 
     /**
-     * Load relations with limit.
-     *
-     *
-     * @var array|string $relations
-     * @param int $limit
-     * @return $this
-     */
-    public function withLimit($relations, $limit = 0)
-    {
-        $this->builder->with([$relations => function($query) use ($limit) {
-            $query->limit($limit);
-        }]);
-
-        return $this;
-    }
-
-    /**
      * Load count relations.
      *
      * @var array|string $relations
@@ -127,6 +110,31 @@ abstract class BasicService implements BasicServiceContract
     public function withCount($relations)
     {
         $this->builder->withCount($relations);
+
+        return $this;
+    }
+
+    /**
+     * Load relations with conditions.
+     * @param $relation
+     * @param string $sort
+     * @param null $limit
+     *
+     * @return $this
+     */
+    public function withConditions($relation, $sort = [], $limit = null)
+    {
+        $this->builder->with([$relation => function ($query) use ($sort, $limit) {
+            // Set order.
+            if (!empty($sort)) {
+                $query->orderBy($sort['field'], $sort['order']);
+            }
+
+            // Set limit.
+            if (!empty($limit)) {
+                $query->limit($limit);
+            }
+        }]);
 
         return $this;
     }

@@ -27,7 +27,7 @@ class VotersController extends Controller
      */
     public function index($post_id)
     {
-        $post = $this->post_service->with('voters')->findOrFail($post_id);
+        $post = $this->post_service->with(['voters', 'voters.media'])->findOrFail($post_id);
 
         return view('votes::voters.index', compact('post'));
     }
