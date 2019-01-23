@@ -11,7 +11,7 @@ class PostPolicy
     use HandlesAuthorization;
 
     /**
-     * Determine whether the user can post for the post.
+     * Determine whether the user can upvote for the post.
      *
      * @param  User  $user
      * @param  Post  $post

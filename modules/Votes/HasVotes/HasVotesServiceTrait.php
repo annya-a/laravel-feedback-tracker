@@ -35,4 +35,19 @@ trait HasVotesServiceTrait
     {
         return $this->builder->withCount('voters')->find($id)->voters_count;
     }
+
+    /**
+     * Load voter by user_id.
+     *
+     * @param $user_id
+     * @return $this
+     */
+    public function withUserVoter($user_id)
+    {
+        $this->builder->with(['userVoter' => function($query) use ($user_id) {
+            $query->where('user_id', $user_id);
+        }]);
+
+        return $this;
+    }
 }

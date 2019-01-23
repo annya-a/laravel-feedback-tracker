@@ -25,4 +25,14 @@ trait HasVotesModelTrait
     {
         return $this->belongsToMany(User::class, 'votes');
     }
+
+    /**
+     * Voter relation.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
+    public function userVoter()
+    {
+        return $this->belongsToMany(User::class, 'votes');
+    }
 }

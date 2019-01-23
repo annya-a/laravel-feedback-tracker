@@ -48,12 +48,12 @@ class HomeController extends Controller
      *
      * @return string
      */
-    public function index()
+    public function index(Request $request)
     {
         $categories = $this->category_service->withCount('posts')
             ->getCategories();
 
-        $postsByStatus = $this->getPostsByStatuses();
+        $postsByStatus = $this->getPostsByStatuses($request->user());
 
         return view('home.index', compact('categories', 'postsByStatus'));
     }
@@ -61,7 +61,7 @@ class HomeController extends Controller
     /**
      * Get posts by statuses.
      */
-    private function getPostsByStatuses()
+    private function getPostsByStatuses($user)
     {
         $statuses = [
             PostServiceContract::STATUS_PLANNED,
@@ -72,8 +72,10 @@ class HomeController extends Controller
         $posts = [];
         foreach ($statuses as $status) {
             $listByStatus = $this->post_service->with(['category', 'user'])
+                ->withUserVoter($user->id)
                 ->withVotes()
                 ->getPostsByStatus($status, static::POSTS_BY_STATUS_NUMBER);
+
             $posts[$status] = $listByStatus;
         }
 
