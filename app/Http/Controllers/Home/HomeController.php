@@ -74,6 +74,7 @@ class HomeController extends Controller
             $listByStatus = $this->post_service->with(['category', 'user'])
                 ->withUserVoter($user->id)
                 ->withVotes()
+                ->orderBy('created_at', 'desc')
                 ->getPostsByStatus($status, static::POSTS_BY_STATUS_NUMBER);
 
             $posts[$status] = $listByStatus;

@@ -60,4 +60,13 @@ interface BasicServiceContract
      * @return $this
      */
     public function withConditions($relation, $sort = [], $limit = null);
+
+    /**
+     * Add order by.
+     *
+     * @var string $column
+     * @var string $direction = 'asc'
+     * @return $this
+     */
+    public function orderBy($column, $direction = 'asc');
 }

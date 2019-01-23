@@ -45,12 +45,14 @@ class CategoriesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
         $category = $this->category_service->findOrFail($id);
         $posts = $this->post_category_service
             ->with('user')
-            ->withCount('votes')
+            ->withVotes()
+            ->withUserVoter($request->user()->id)
+            ->orderBy('created_at', 'desc')
             ->getPostsByCategoryPaginated($id, static::POSTS_PER_PAGE);
 
         return view('categories::show', compact('category', 'posts'));

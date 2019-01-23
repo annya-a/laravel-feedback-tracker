@@ -4,10 +4,11 @@ namespace Modules\Posts\Services;
 
 use App\Core\Services\BasicService;
 use Modules\Posts\Entities\Post;
+use Modules\Votes\HasVotes\HasVotesServiceTrait;
 
 class PostCategoryService extends BasicService implements PostCategoryServiceContract
 {
-
+    use HasVotesServiceTrait;
     /**
      * Specify Model class name
      *

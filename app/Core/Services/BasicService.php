@@ -122,12 +122,12 @@ abstract class BasicService implements BasicServiceContract
      *
      * @return $this
      */
-    public function withConditions($relation, $sort = [], $limit = null)
+    public function withConditions($relation, $order = [], $limit = null)
     {
-        $this->builder->with([$relation => function ($query) use ($sort, $limit) {
+        $this->builder->with([$relation => function ($query) use ($order, $limit) {
             // Set order.
-            if (!empty($sort)) {
-                $query->orderBy($sort['field'], $sort['order']);
+            if (!empty($order)) {
+                $query->orderBy($order['column'], $order['direction']);
             }
 
             // Set limit.
@@ -135,6 +135,20 @@ abstract class BasicService implements BasicServiceContract
                 $query->limit($limit);
             }
         }]);
+
+        return $this;
+    }
+
+    /**
+     * Add order by.
+     *
+     * @var string $column
+     * @var string $direction = 'asc'
+     * @return $this
+     */
+    public function orderBy($column, $direction = 'asc')
+    {
+        $this->builder->orderBy($column, $direction);
 
         return $this;
     }

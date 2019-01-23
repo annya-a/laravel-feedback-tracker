@@ -62,10 +62,10 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request$request, $id)
     {
         // Get post.
-        $post = $this->showLoadPost($id);
+        $post = $this->showLoadPost($id, $request->user());
 
         // Get voters for post.
         $voters_left = $this->post_service->countVoters($id) - static::VOTERS_NUMBER;
@@ -79,11 +79,12 @@ class PostsController extends Controller
      * @param $id
      * @return mixed
      */
-    private function showLoadPost($id)
+    private function showLoadPost($id, $user)
     {
         return $this->post_service->with(['user', 'comments.user', 'comments.user.media', 'voters.media'])
-            ->withConditions('comments', ['field' => 'created_at', 'order' => 'desc'])
+            ->withConditions('comments', ['column' => 'created_at', 'direction' => 'desc'])
             ->withConditions('voters', [], static::VOTERS_NUMBER)
+            ->withUserVoter($user->id)
             ->withVotes()
             ->findOrFail($id);
     }
