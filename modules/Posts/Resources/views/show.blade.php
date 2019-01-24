@@ -46,7 +46,8 @@
             </div>
 
             <div>
-                {{ $post->details }}
+                {{-- @todo Do purifiyng in more clean way. --}}
+                {!! clean(nl2br($post->details)) !!}
             </div>
 
             <div class="meta text-muted small">

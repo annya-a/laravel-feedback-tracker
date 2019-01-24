@@ -9,7 +9,8 @@
             </div>
 
             <div>
-                {{ $comment->text }}
+                {{-- @todo Do purifiyng in more clean way. --}}
+                {!! clean(nl2br($comment->text)) !!}
             </div>
             <div class="meta text-muted small">
                 {{ $comment->created_at->diffForHumans() }}
