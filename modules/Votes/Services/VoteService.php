@@ -2,32 +2,23 @@
 
 namespace Modules\Votes\Services;
 
-use App\Core\Services\BasicService;
+use Modules\Posts\Entities\Post;
+use Modules\Users\Entities\User;
 use Modules\Votes\Entities\Vote;
 
-class VoteService extends BasicService implements VoteServiceContract
+class VoteService implements VoteContract
 {
-    /**
-     * Specify Model class name
-     *
-     * @return mixed
-     */
-    protected function model()
-    {
-        return Vote::class;
-    }
-
     /**
      * Vote for post.
      *
-     * @param int $post_id
-     * @param int $user_id
+     * @param Post $post
+     * @param User $user
      * @return mixed
      */
-    public function vote(int $post_id, int $user_id)
+    public function vote(Post $post, User $user)
     {
-        $attributes = ['post_id' => $post_id, 'user_id' => $user_id];
+        $attributes = ['post_id' => $post->id, 'user_id' => $user->id];
 
-        return $this->builder->deleteOrCreate($attributes);
+        return Vote::deleteOrCreate($attributes);
     }
 }

@@ -3,10 +3,9 @@
 namespace Modules\Categories\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-use Modules\Categories\Services\CategoryServiceContract;
-use Modules\Posts\Services\PostCategoryServiceContract;
+use Modules\Categories\Entities\Category;
+use Modules\Posts\Entities\Post;
 
 class CategoriesController extends Controller
 {
@@ -16,45 +15,22 @@ class CategoriesController extends Controller
     const POSTS_PER_PAGE = 10;
 
     /**
-     * Category Service.
-     *
-     * @var CategoryServiceContract
-     */
-    protected $category_service;
-
-    /**
-     * Post Service.
-     *
-     * @var PostCategoryServiceContract
-     */
-    protected $post_category_service;
-
-    /**
-     * CategoryController constructor.
-     * @param CategoryServiceContract $categoryService
-     */
-    public function __construct(CategoryServiceContract $categoryService, PostCategoryServiceContract $postCategoryService)
-    {
-        $this->category_service = $categoryService;
-        $this->post_category_service = $postCategoryService;
-    }
-
-    /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param Request $request
+     * @param Category $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, $id)
+    public function show(Request $request, Category $category)
     {
-        $category = $this->category_service->findOrFail($id);
-        $posts = $this->post_category_service
-            ->with('user')
-            ->withVotes()
-            ->withUserVoter($request->user()->id)
+        $posts = Post::with('user')
+            ->withCount('votes')
             ->orderBy('created_at', 'desc')
-            ->getPostsByCategoryPaginated($id, static::POSTS_PER_PAGE);
+            ->where('category_id', $category->id)
+            ->paginate(static::POSTS_PER_PAGE);
 
-        return view('categories::show', compact('category', 'posts'));
+        $userPostVotes = $request->user()->hasPostsVotes($posts->getCollection());
+
+        return view('categories::show', compact('category', 'posts', 'userPostVotes'));
     }
 }

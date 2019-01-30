@@ -2,32 +2,20 @@
 
 namespace Modules\Votes\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-use Modules\Posts\Services\PostServiceContract;
+use Modules\Posts\Entities\Post;
 
 class VotersController extends Controller
 {
     /**
-     * Post service.
-     *
-     * @var PostServiceContract
-     */
-    protected $post_service;
-
-    public function __construct(PostServiceContract $postService)
-    {
-        $this->post_service = $postService;
-    }
-
-    /**
      * Display a listing of the resource.
+     * @param Post $post
      * @return Response
      */
-    public function index($post_id)
+    public function index(Post $post)
     {
-        $post = $this->post_service->with(['voters', 'voters.media'])->findOrFail($post_id);
+        $post = $post->load('voters', 'voters.media');
 
         return view('votes::voters.index', compact('post'));
     }

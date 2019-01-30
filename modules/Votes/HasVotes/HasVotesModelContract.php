@@ -18,11 +18,4 @@ interface HasVotesModelContract
      * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
     public function voters();
-
-    /**
-     * Voter relation.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
-     */
-    public function userVoter();
 }

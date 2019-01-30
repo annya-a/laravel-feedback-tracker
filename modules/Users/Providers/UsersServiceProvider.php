@@ -2,9 +2,11 @@
 
 namespace Modules\Users\Providers;
 
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
 use Illuminate\Contracts\View\Factory as FactoryContract;
+use Modules\Users\Entities\User;
 use Modules\Users\Http\Views\Composers\CurrentUser;
 
 class UsersServiceProvider extends ServiceProvider
@@ -27,6 +29,7 @@ class UsersServiceProvider extends ServiceProvider
         $this->registerViews();
         $this->registerFactories();
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+        $this->registerPolymorphicRelations();
 
         $viewFactory->composer('*', CurrentUser::class);
     }
@@ -39,15 +42,6 @@ class UsersServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->register(RouteServiceProvider::class);
-
-        // Bind service.
-        $this->app->bind(\Modules\Users\Services\UserServiceContract::class, \Modules\Users\Services\UserService::class);
-
-        // Bind service.
-        $this->app->bind(
-            \Modules\Users\Services\AuthServiceContract::class,
-            \Modules\Users\Services\AuthService::class
-        );
     }
 
     /**
@@ -104,5 +98,15 @@ class UsersServiceProvider extends ServiceProvider
     public function provides()
     {
         return [];
+    }
+
+    /**
+     * Register polymorphic relations.
+     */
+    private function registerPolymorphicRelations()
+    {
+        Relation::morphMap([
+            'users' => User::class,
+        ]);
     }
 }

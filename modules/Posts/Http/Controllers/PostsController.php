@@ -2,11 +2,11 @@
 
 namespace Modules\Posts\Http\Controllers;
 
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Modules\Posts\Entities\Post;
 use Modules\Posts\Http\Requests\PostStoreRequest;
-use Modules\Posts\Services\PostServiceContract;
 
 class PostsController extends Controller
 {
@@ -23,23 +23,6 @@ class PostsController extends Controller
     const VOTERS_NUMBER = 10;
 
     /**
-     * Post service.
-     *
-     * @var PostServiceContract
-     */
-    protected $post_service;
-
-    /**
-     * PostController constructor.
-     *
-     * @param PostServiceContract $postService
-     */
-    public function __construct(PostServiceContract $postService)
-    {
-        $this->post_service = $postService;
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param PostStoreRequest $request
@@ -48,10 +31,10 @@ class PostsController extends Controller
     public function store(PostStoreRequest $request)
     {
         $attributes = $request->only(['title', 'details', 'category_id']);
-        $attributes['status'] = PostServiceContract::STATUS_PLANNED;
+        $attributes['status'] = Post::STATUS_PLANNED;
         $attributes['user_id'] = $request->user()->id;
 
-        $this->post_service->create($attributes);
+        Post::create($attributes);
 
         return redirect()->route('categories.show', ['category' => $request->category_id]);
     }
@@ -59,33 +42,36 @@ class PostsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param Request $request
+     * @param Post $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Request$request, $id)
+    public function show(Request $request, Post $post)
     {
-        // Get post.
-        $post = $this->showLoadPost($id, $request->user());
+        // Load post data.
+        $this->showLoad($post);
+
+        $userPostVotes = $request->user()->hasPostsVotes(collect([$post]));
 
         // Get voters for post.
-        $voters_left = $this->post_service->countVoters($id) - static::VOTERS_NUMBER;
+        $voters_left = $post->voters()->count() - static::VOTERS_NUMBER;
 
-        return view('posts::show', compact('post', 'voters_left'));
+        return view('posts::show', compact('post', 'voters_left', 'userPostVotes'));
     }
 
     /**
-     * Load post which is suitable for show.
-     *
-     * @param $id
-     * @return mixed
+     * Load data for show.
+     * @param
      */
-    private function showLoadPost($id, $user)
+    private function showLoad(Post $post)
     {
-        return $this->post_service->with(['user', 'comments.user', 'comments.user.media', 'voters.media'])
-            ->withConditions('comments', ['column' => 'created_at', 'direction' => 'desc'])
-            ->withConditions('voters', [], static::VOTERS_NUMBER)
-            ->withUserVoter($user->id)
-            ->withVotes()
-            ->findOrFail($id);
+        $post->load('user')
+            ->load(['comments' => function(Relation $query) {
+                $query->orderBy('created_at', 'desc')->with(['user', 'user.media']);
+            }])
+            ->load(['voters' => function(Relation $query) {
+                $query->limit(static::VOTERS_NUMBER)->with('media');
+            }])
+            ->loadCount('votes');
     }
 }

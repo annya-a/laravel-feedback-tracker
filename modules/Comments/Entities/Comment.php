@@ -4,7 +4,7 @@ namespace Modules\Comments\Entities;
 
 use Modules\Posts\Entities\Post;
 use Modules\Users\Entities\User;
-use App\Core\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {

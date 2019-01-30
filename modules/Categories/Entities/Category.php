@@ -2,7 +2,7 @@
 
 namespace Modules\Categories\Entities;
 
-use App\Core\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model;
 use Modules\Posts\Entities\Post;
 
 class Category extends Model

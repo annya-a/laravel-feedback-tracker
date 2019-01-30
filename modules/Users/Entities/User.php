@@ -2,7 +2,7 @@
 
 namespace Modules\Users\Entities;
 
-use App\Core\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\MustVerifyEmail;
 use Illuminate\Auth\Passwords\CanResetPassword;
