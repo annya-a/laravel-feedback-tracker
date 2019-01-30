@@ -4,6 +4,7 @@ namespace Modules\Users\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Modules\Users\Entities\User;
 
 class AutoLogin
 {
