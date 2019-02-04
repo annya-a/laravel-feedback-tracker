@@ -15778,6 +15778,21 @@ a.text-dark:focus {
   background-image: none;
 }
 
+.form-control::-webkit-input-placeholder {
+  color: #bbb;
+  opacity: 1;
+}
+
+.form-control::-ms-input-placeholder {
+  color: #bbb;
+  opacity: 1;
+}
+
+.form-control::placeholder {
+  color: #bbb;
+  opacity: 1;
+}
+
 .btn-slight {
   color: #bfbfbf;
   background-color: #FFFFFF;
