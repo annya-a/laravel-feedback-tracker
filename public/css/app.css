@@ -15773,6 +15773,12 @@ a.text-dark:focus {
   margin-bottom: 1rem;
 }
 
+.btn-vote {
+  width: 42px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
 .was-validated .form-control:invalid,
 .form-control.is-invalid {
   background-image: none;
