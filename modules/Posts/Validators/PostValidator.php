@@ -10,10 +10,12 @@ class PostValidator extends LaravelValidator {
         'title' => [
             'required' => 'required',
             'string' => 'string',
+            'min' => 'min:5',
         ],
         'details' => [
             'required' => 'required',
             'string' => 'string',
+            'min' => 'min:5',
         ],
         'category_id' => [
             'required' => 'required',
